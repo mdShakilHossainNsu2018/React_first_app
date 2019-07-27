@@ -1,9 +1,13 @@
 import React, { useEffect } from 'react';
-
+import AuthContext from '../../context/auth-context'
 import classes from './Cockpit.css';
 
 const cockpit = props => {
+
+  const toggleBtnRef = React.useRef(null)
+
   useEffect(() => {
+    toggleBtnRef.current.click();
     console.log('[Cockpit.js] useEffect');
     // Http request...
     setTimeout(() => {
@@ -23,6 +27,8 @@ const cockpit = props => {
 
   // useEffect();
 
+  const authContext = React.useContext(AuthContext);
+
   const assignedClasses = [];
   let btnClass = '';
   if (props.showPersons) {
@@ -40,9 +46,10 @@ const cockpit = props => {
     <div className={classes.Cockpit}>
       <h1>{props.title}</h1>
       <p className={assignedClasses.join(' ')}>This is really working!</p>
-      <button className={btnClass} onClick={props.clicked}>
+      <button ref={toggleBtnRef} className={btnClass} onClick={props.clicked}>
         Toggle Persons
       </button>
+      <button className={btnClass} onClick={authContext.login}> login </button>
     </div>
   );
 };
