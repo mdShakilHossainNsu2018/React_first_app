@@ -10,10 +10,12 @@
   .Cockpit button {
     border: 1px solid blue;
     padding: 16px;
+    border-radius: 50px;
     background-color: green;
     font: inherit;
     color: white;
     cursor: pointer;
+    outline: none;
   }
   
   .Cockpit button:hover {
